@@ -1,0 +1,26 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+// OTTERMCU simulation module.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module OTTERMCU_sim(
+    );
+
+logic clk;
+
+OTTERMCU    otter   ( .CLK(clk) );
+
+always
+    begin
+        clk = 0;
+        #5;
+        clk = 1;
+        #5;
+    end
+
+endmodule
