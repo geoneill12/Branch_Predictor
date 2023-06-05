@@ -9,7 +9,7 @@
 
 `define     BRANCH_ADDRESS      2
 `define     BRANCH_OPCODE       7'b1100011
-`define     TABLE_ADR_WIDTH     2
+`define     TABLE_ADR_WIDTH     6
 `define     TABLE_SIZE          2**`TABLE_ADR_WIDTH
 `define     TABLE_WIDTH         32
 
