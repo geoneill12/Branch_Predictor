@@ -46,7 +46,7 @@ PC              pc          ( .clk(CLK), .NIS(NIS), .reset(RST), .pcWrite(pcWrit
 PLUS_4          plus_4      ( .CIS(CIS), .NIS(pc_4) );
 
 OTTER_mem_byte  memory      ( .MEM_ADDR1(CIS), .MEM_ADDR2(ALU_out), .MEM_CLK(CLK), .MEM_DIN2(rs2), .MEM_WRITE2(memWrite),
-                                .MEM_READ1(memRead1), .MEM_READ2(memRead2), .IO_IN(IOBUS_IN), .ERR(), .MEM_SIZE(ir[13:12]),
+                                .MEM_READ1(memRead1), .MEM_READ2(memRead2), .IO_IN(rand_num), .ERR(), .MEM_SIZE(ir[13:12]),
                                 .MEM_SIGN(ir[14]), .MEM_DOUT1(ir), .MEM_DOUT2(dout2), .IO_WR(IOBUS_WR) );
 Reg_File        register    ( .adr1(ir[19:15]), .adr2(ir[24:20]), .wd(wd), .wa(ir[11:7]), .en(regWrite), .clk(CLK), .rs1(rs1),
                                 .rs2(rs2) );
@@ -74,4 +74,8 @@ Branch_Predictor    BP      (   .clk(CLK),
                                 .pcSource(pcSource),
                                 .opcode(ir[6:0]),
                                 .pc(CIS)    );
+
+logic [31:0] rand_num;
+random_number_generator     RNG     (   .clk(CLK),
+                                        .Q(rand_num)    );
 endmodule
